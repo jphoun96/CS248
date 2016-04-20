@@ -6,9 +6,6 @@ import java.awt.*;
 
 public class gui extends JFrame
 {
-	private static JButton[] cells;
-	private CellButtonHandler[] cellHandlers;
-	
 	class window extends WindowAdapter
 	{
 		public void Closing(WindowEvent e)
@@ -17,6 +14,34 @@ public class gui extends JFrame
 			System.exit(0);
 		}
 	}
+
+	class Button
+	{
+		int x, y;
+		int size;
+		Color color;
+		
+		public Button(int xpos, int ypos, int s, Color c)
+		{
+			x=xpos; y=ypos; color=c;
+			size=s;
+		}
+		
+		public void colorme(Color c)
+		{
+			color=c;
+		}
+		
+		public void drawme(Graphics g)
+		{
+			g.setColor(Color.blue);
+			g.fillOval(x,
+				(int)(y+0.05*size),
+				(int)(1.5*size),(int)(1.5*size));
+		}
+	}
+	
+	Button [] cells;
 	
 	class Picture extends JPanel
 	{
@@ -33,44 +58,35 @@ public class gui extends JFrame
 			g.fillRect(0,0,900,600);
 		}
 	}
-	
+
 	Picture r;
-	
+
 	public gui()
 	{
 		addWindowListener( new window() );
-		setTitle("Jerry Tic-Tac-Toe");
+		setTitle("Jerry-Tac-Toe");
 		//size of window
 		setSize(900,600);
+		
+		cells=new Button[9];
+		for(int i=0; i<9; i++)
+		{
+			cells[i]=new Button(
+			(500),(500),(500),(Color.blue));
+			
+		}
+		
 		Container stuff=getContentPane();
 		stuff.setLayout( new BorderLayout());
 		r=new Picture();
 		stuff.add(r, "Center" );
+		
 		setVisible(true);
-		
-		cells = new JButton[9];
-		cellHandlers = new CellButtonHandler[9];
-		for(int i = 0; i < 9; i++)
-		{
-			cells[i] = new JButton("");
-			cellHandlers[i] = new CellButtonHandler();
-			cells[i].addActionListener(cellHandlers[i]);
-		}
-		
-		for(int i = 0; i < 9; i++)
-		{
-			add(cells[i]);
-			cells[i].setHorizontalTextPosition(SwingConstants.CENTER);
-			cells[i].setOpaque(false);
-			cells[i].setContentAreaFilled(false);
-			cells[i].setBorderPainted(false);
-		}
-		
-		cells[0].setBounds(100,100,100,100);
 	}
 
 	public static void main(String [] args)
 	{
 		gui thing = new gui();
 	}
+
 }
