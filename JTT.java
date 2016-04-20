@@ -4,7 +4,7 @@ import java.awt.event.*;
 import java.awt.*;
 
 
-public class gui extends JFrame
+public class JTT extends JFrame
 {
 	class window extends WindowAdapter
 	{
@@ -20,18 +20,18 @@ public class gui extends JFrame
 		int x, y;
 		int size;
 		Color color;
-		
+
 		public Button(int xpos, int ypos, int s, Color c)
 		{
 			x=xpos; y=ypos; color=c;
 			size=s;
 		}
-		
+
 		public void colorme(Color c)
 		{
 			color=c;
 		}
-		
+
 		public void drawme(Graphics g)
 		{
 			g.setColor(Color.blue);
@@ -40,9 +40,9 @@ public class gui extends JFrame
 				(int)(1.5*size),(int)(1.5*size));
 		}
 	}
-	
+
 	Button [] cells;
-	
+
 	class Picture extends JPanel
 	{
 		//set size of background
@@ -61,32 +61,32 @@ public class gui extends JFrame
 
 	Picture r;
 
-	public gui()
+	public JTT()
 	{
 		addWindowListener( new window() );
 		setTitle("Jerry-Tac-Toe");
 		//size of window
 		setSize(900,600);
-		
+
 		cells=new Button[9];
 		for(int i=0; i<9; i++)
 		{
 			cells[i]=new Button(
-			(500),(500),(500),(Color.blue));
-			
+
+
 		}
-		
+
 		Container stuff=getContentPane();
 		stuff.setLayout( new BorderLayout());
 		r=new Picture();
 		stuff.add(r, "Center" );
-		
+
 		setVisible(true);
 	}
 
 	public static void main(String [] args)
 	{
-		gui thing = new gui();
+		JTT thing = new JTT();
 	}
 
 }
