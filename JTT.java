@@ -49,6 +49,9 @@ public class JTT extends JFrame
 		public Picture()
 		{
 			setSize(900,700);
+			//setLayout(new BorderLayout());
+			//setContentPane(new JLabel(new ImageIcon("back.png")));
+			//setLayout(null);
 		}
 
 		//set color of background
