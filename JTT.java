@@ -48,7 +48,7 @@ public class JTT extends JFrame
 		//set size of background
 		public Picture()
 		{
-			setSize(900,600);
+			setSize(900,700);
 		}
 
 		//set color of background
@@ -56,7 +56,14 @@ public class JTT extends JFrame
 		{
 			g.setColor(Color.white);
 			g.fillRect(0,0,900,700);
-
+			
+			g.setColor(Color.green);
+			g.fillRect(225,550,90,90);
+			
+			g.setColor(Color.green);
+			g.fillRect(550,550,90,90);
+			
+			
 			for(int i=0; i<9; i++)
 			{
 				cells[i].drawme(g);
