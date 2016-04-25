@@ -37,7 +37,7 @@ public class JTT extends JFrame
 			g.setColor(Color.blue);
 			g.fillOval(x,
 				(int)(y+0.05*size),
-				(int)(1.5*size),(int)(1.5*size));
+				(int)(1.0*size),(int)(1.0*size));
 		}
 	}
 
@@ -55,7 +55,12 @@ public class JTT extends JFrame
 		public void paintComponent(Graphics g)
 		{
 			g.setColor(Color.white);
-			g.fillRect(0,0,900,600);
+			g.fillRect(0,0,900,700);
+
+			for(int i=0; i<9; i++)
+			{
+				cells[i].drawme(g);
+			}
 		}
 	}
 
@@ -66,15 +71,37 @@ public class JTT extends JFrame
 		addWindowListener( new window() );
 		setTitle("Jerry-Tac-Toe");
 		//size of window
-		setSize(900,600);
+		setSize(900,700);
+		
+		cells= new Button[9];
+		
+		cells[0]= new Button(
+		50,25,85,Color.blue);
 
-		cells=new Button[9];
-		for(int i=0; i<9; i++)
-		{
-			cells[i]=new Button(
+		cells[1]= new Button(
+		400,25,85,Color.blue);
 
+		cells[2]= new Button(
+		750,25,85,Color.blue);
 
-		}
+		cells[3]= new Button(
+		200,225,85,Color.blue);
+
+		cells[4]= new Button(
+		400,225,85,Color.blue);
+
+		cells[5]= new Button(
+		600,225,85,Color.blue);
+
+		cells[6]= new Button(
+		50,400,85,Color.blue);
+
+		cells[7]= new Button(
+		400,400,85,Color.blue);
+
+		cells[8]= new Button(
+		750,400,85,Color.blue);
+
 
 		Container stuff=getContentPane();
 		stuff.setLayout( new BorderLayout());
