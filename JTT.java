@@ -10,8 +10,8 @@ public class JTT extends JFrame
 	private static boolean cross;
 	private boolean gameOver;
 	private ImageIcon neutralIcon = new ImageIcon("unpressed.png");
-	private ImageIcon noughtIcon = new ImageIcon("xpressed.png");
-	private ImageIcon crossIcon = new ImageIcon("opressed.png");
+	private ImageIcon crossIcon = new ImageIcon("xpressed.png");
+	private ImageIcon noughtIcon = new ImageIcon("opressed.png");
 	
 	class window extends WindowAdapter
 	{
@@ -95,7 +95,7 @@ public class JTT extends JFrame
 	public void initialize()
 	{
 		//set booleans
-		cross = true;
+		noughts = true;
 		gameOver = false;
 		
 		for (int i = 0; i < 9; i++) 
@@ -380,9 +380,9 @@ public class JTT extends JFrame
 			
 		if (inputValue.equals("U") || inputValue.equals("u")) {
 			// continue
-			cross = true;
+			noughts = true;
 		} else if (inputValue.equals("C") || inputValue.equals("c")) {
-			cross = false;
+			noughts = false;
 			cpuMove();
 		} else {
 			JOptionPane.showMessageDialog(null,
@@ -409,14 +409,14 @@ public class JTT extends JFrame
 			if (text.equals("X") || text.equals("O"))
 			{ return; }  //return if already an X or O
 		
-			if(cross)
+			if(noughts)
 			{
-				pressed.setText("X");
-				pressed.setIcon(crossIcon);
-			}
-			else {
 				pressed.setText("O");
 				pressed.setIcon(noughtIcon);
+			}
+			else {
+				pressed.setText("X");
+				pressed.setIcon(crossIcon);
 			}
 		}
 	}
