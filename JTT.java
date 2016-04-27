@@ -8,6 +8,10 @@ public class JTT extends JFrame
 {
 	private static JButton[] cells;
 	private static boolean noughts;
+	private boolean gameOver;
+	private ImageIcon neutralIcon = new ImageIcon("unpressed.png");
+	private ImageIcon noughtIcon = new ImageIcon("xpressed.png");
+	private ImageIcon crossIcon = new ImageIcon("opressed.png");
 	
 	class window extends WindowAdapter
 	{
@@ -91,6 +95,7 @@ public class JTT extends JFrame
 	public void initialize()
 	{
 		noughts = true;
+		gameOver = false;
 		
 		for (int i = 0; i < 9; i++)
 		{
@@ -392,6 +397,35 @@ public class JTT extends JFrame
 	public static void main(String [] args)
 	{
 		JTT thing = new JTT();
+	}
+	
+	private class CellButtonHandler implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+			//return if game over
+			if (gameOver)
+			{ return; }
+			
+			//find button
+			JButton pressed = (JButton) (e.getSource());
+			
+			//get text of button
+			String text = pressed.getText();
+			
+			if (text.equals("X") || text.equals("O"))
+			{ return; }  //return if already an X or O
+		
+			if(noughts)
+			{
+				pressed.setText("X");
+				pressed.setIcon(crossIcon);
+			}
+			else {
+				pressed.setText("O");
+				pressed.setIcon(noughtIcon);
+			}
+		}
 	}
 
 }
