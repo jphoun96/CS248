@@ -98,6 +98,269 @@ public class JTT extends JFrame
 
 	}
 	
+	public static void cpumove()
+	{
+		// offensive completion
+		if ((cells[0].getText().equals("X") && cells[0].getText().equals(cells[1].getText()))
+				&& cells[2].getText().equals("3")) {
+			cells[2].doClick();
+		} else if ((cells[0].getText().equals("X") && cells[0].getText().equals(cells[2].getText()))
+				&& cells[1].getText().equals("2")) {
+			cells[1].doClick();
+		} else if ((cells[1].getText().equals("X") && cells[1].getText().equals(cells[2].getText()))
+				&& cells[0].getText().equals("1")) {
+			cells[0].doClick();
+		}
+
+		else if ((cells[0].getText().equals("X") && cells[0].getText().equals(cells[4].getText()))
+				&& cells[8].getText().equals("9")) {
+			cells[8].doClick();
+		} else if ((cells[0].getText().equals("X") && cells[0].getText().equals(cells[8].getText()))
+				&& cells[4].getText().equals("5")) {
+			cells[4].doClick();
+		} else if ((cells[4].getText().equals("X") && cells[4].getText().equals(cells[8].getText()))
+				&& cells[0].getText().equals("1")) {
+			cells[0].doClick();
+		}
+
+		else if ((cells[0].getText().equals("X") && cells[0].getText().equals(cells[3].getText()))
+				&& cells[7].getText().equals("8")) {
+			cells[7].doClick();
+		} else if ((cells[0].getText().equals("X") && cells[0].getText().equals(cells[7].getText()))
+				&& cells[3].getText().equals("4")) {
+			cells[3].doClick();
+		} else if ((cells[3].getText().equals("X") && cells[3].getText().equals(cells[7].getText()))
+				&& cells[0].getText().equals("1")) {
+			cells[0].doClick();
+		}
+
+		else if ((cells[1].getText().equals("X") && cells[1].getText().equals(cells[3].getText()))
+				&& cells[6].getText().equals("7")) {
+			cells[6].doClick();
+		} else if ((cells[1].getText().equals("X") && cells[1].getText().equals(cells[6].getText()))
+				&& cells[3].getText().equals("4")) {
+			cells[3].doClick();
+		} else if ((cells[3].getText().equals("X") && cells[3].getText().equals(cells[6].getText()))
+				&& cells[1].getText().equals("2")) {
+			cells[1].doClick();
+		}
+
+		else if ((cells[1].getText().equals("X") && cells[1].getText().equals(cells[5].getText()))
+				&& cells[8].getText().equals("9")) {
+			cells[8].doClick();
+		} else if ((cells[1].getText().equals("X") && cells[1].getText().equals(cells[8].getText()))
+				&& cells[5].getText().equals("6")) {
+			cells[5].doClick();
+		} else if ((cells[5].getText().equals("X") && cells[5].getText().equals(cells[8].getText()))
+				&& cells[1].getText().equals("2")) {
+			cells[1].doClick();
+		}
+
+		else if ((cells[2].getText().equals("X") && cells[2].getText().equals(cells[4].getText()))
+				&& cells[6].getText().equals("7")) {
+			cells[6].doClick();
+		} else if ((cells[2].getText().equals("X") && cells[2].getText().equals(cells[6].getText()))
+				&& cells[4].getText().equals("5")) {
+			cells[4].doClick();
+		} else if ((cells[4].getText().equals("X") && cells[4].getText().equals(cells[6].getText()))
+				&& cells[2].getText().equals("3")) {
+			cells[2].doClick();
+		}
+
+		else if ((cells[2].getText().equals("X") && cells[2].getText().equals(cells[5].getText()))
+				&& cells[7].getText().equals("8")) {
+			cells[7].doClick();
+		} else if ((cells[2].getText().equals("X") && cells[2].getText().equals(cells[7].getText()))
+				&& cells[5].getText().equals("6")) {
+			cells[5].doClick();
+		} else if ((cells[5].getText().equals("X") && cells[5].getText().equals(cells[7].getText()))
+				&& cells[2].getText().equals("3")) {
+			cells[2].doClick();
+		}
+
+		else if ((cells[3].getText().equals("X") && cells[3].getText().equals(cells[4].getText()))
+				&& cells[5].getText().equals("6")) {
+			cells[5].doClick();
+		} else if ((cells[3].getText().equals("X") && cells[3].getText().equals(cells[5].getText()))
+				&& cells[4].getText().equals("5")) {
+			cells[4].doClick();
+		} else if ((cells[4].getText().equals("X") && cells[4].getText().equals(cells[5].getText()))
+				&& cells[3].getText().equals("4")) {
+			cells[3].doClick();
+		}
+
+		else if ((cells[6].getText().equals("X") && cells[6].getText().equals(cells[7].getText()))
+				&& cells[8].getText().equals("9")) {
+			cells[8].doClick();
+		} else if ((cells[6].getText().equals("X") && cells[6].getText().equals(cells[8].getText()))
+				&& cells[7].getText().equals("8")) {
+			cells[7].doClick();
+		} else if ((cells[7].getText().equals("X") && cells[7].getText().equals(cells[8].getText()))
+				&& cells[6].getText().equals("7")) {
+			cells[6].doClick();
+		}
+		
+		// defensive blocking
+		else if ((cells[0].getText().equals("O") && cells[0].getText().equals(cells[1].getText()))
+				&& cells[2].getText().equals("3")) {
+			cells[2].doClick();
+		} else if ((cells[0].getText().equals("O") && cells[0].getText().equals(cells[2].getText()))
+				&& cells[1].getText().equals("2")) {
+			cells[1].doClick();
+		} else if ((cells[1].getText().equals("O") && cells[1].getText().equals(cells[2].getText()))
+				&& cells[0].getText().equals("1")) {
+			cells[0].doClick();
+		}
+
+		else if ((cells[0].getText().equals("O") && cells[0].getText().equals(cells[4].getText()))
+				&& cells[8].getText().equals("9")) {
+			cells[8].doClick();
+		} else if ((cells[0].getText().equals("O") && cells[0].getText().equals(cells[8].getText()))
+				&& cells[4].getText().equals("5")) {
+			cells[4].doClick();
+		} else if ((cells[4].getText().equals("O") && cells[4].getText().equals(cells[8].getText()))
+				&& cells[0].getText().equals("1")) {
+			cells[0].doClick();
+		}
+
+		else if ((cells[0].getText().equals("O") && cells[0].getText().equals(cells[3].getText()))
+				&& cells[7].getText().equals("8")) {
+			cells[7].doClick();
+		} else if ((cells[0].getText().equals("O") && cells[0].getText().equals(cells[7].getText()))
+				&& cells[3].getText().equals("4")) {
+			cells[3].doClick();
+		} else if ((cells[3].getText().equals("O") && cells[3].getText().equals(cells[7].getText()))
+				&& cells[0].getText().equals("1")) {
+			cells[0].doClick();
+		}
+
+		else if ((cells[1].getText().equals("O") && cells[1].getText().equals(cells[3].getText()))
+				&& cells[6].getText().equals("7")) {
+			cells[6].doClick();
+		} else if ((cells[1].getText().equals("O") && cells[1].getText().equals(cells[6].getText()))
+				&& cells[3].getText().equals("4")) {
+			cells[3].doClick();
+		} else if ((cells[3].getText().equals("O") && cells[3].getText().equals(cells[6].getText()))
+				&& cells[1].getText().equals("2")) {
+			cells[1].doClick();
+		}
+
+		else if ((cells[1].getText().equals("O") && cells[1].getText().equals(cells[5].getText()))
+				&& cells[8].getText().equals("9")) {
+			cells[8].doClick();
+		} else if ((cells[1].getText().equals("O") && cells[1].getText().equals(cells[8].getText()))
+				&& cells[5].getText().equals("6")) {
+			cells[5].doClick();
+		} else if ((cells[5].getText().equals("O") && cells[5].getText().equals(cells[8].getText()))
+				&& cells[1].getText().equals("2")) {
+			cells[1].doClick();
+		}
+
+		else if ((cells[2].getText().equals("O") && cells[2].getText().equals(cells[4].getText()))
+				&& cells[6].getText().equals("7")) {
+			cells[6].doClick();
+		} else if ((cells[2].getText().equals("O") && cells[2].getText().equals(cells[6].getText()))
+				&& cells[4].getText().equals("5")) {
+			cells[4].doClick();
+		} else if ((cells[4].getText().equals("O") && cells[4].getText().equals(cells[6].getText()))
+				&& cells[2].getText().equals("3")) {
+			cells[2].doClick();
+		}
+
+		else if ((cells[2].getText().equals("O") && cells[2].getText().equals(cells[5].getText()))
+				&& cells[7].getText().equals("8")) {
+			cells[7].doClick();
+		} else if ((cells[2].getText().equals("O") && cells[2].getText().equals(cells[7].getText()))
+				&& cells[5].getText().equals("6")) {
+			cells[5].doClick();
+		} else if ((cells[5].getText().equals("O") && cells[5].getText().equals(cells[7].getText()))
+				&& cells[2].getText().equals("3")) {
+			cells[2].doClick();
+		}
+
+		else if ((cells[3].getText().equals("O") && cells[3].getText().equals(cells[4].getText()))
+				&& cells[5].getText().equals("6")) {
+			cells[5].doClick();
+		} else if ((cells[3].getText().equals("O") && cells[3].getText().equals(cells[5].getText()))
+				&& cells[4].getText().equals("5")) {
+			cells[4].doClick();
+		} else if ((cells[4].getText().equals("O") && cells[4].getText().equals(cells[5].getText()))
+				&& cells[3].getText().equals("4")) {
+			cells[3].doClick();
+		}
+
+		else if ((cells[6].getText().equals("O") && cells[6].getText().equals(cells[7].getText()))
+				&& cells[8].getText().equals("9")) {
+			cells[8].doClick();
+		} else if ((cells[6].getText().equals("O") && cells[6].getText().equals(cells[8].getText()))
+				&& cells[7].getText().equals("8")) {
+			cells[7].doClick();
+		} else if ((cells[7].getText().equals("O") && cells[7].getText().equals(cells[8].getText()))
+				&& cells[6].getText().equals("7")) {
+			cells[6].doClick();
+		}
+
+		// specific cases to prevent losing
+		else if (cells[4].getText().equals("X") && cells[8].getText().equals("O") && cells[3].getText().equals("4")) {
+			cells[3].doClick();
+		} else if (cells[4].getText().equals("X") && cells[6].getText().equals("O") && cells[5].getText().equals("6")) {
+			cells[5].doClick();
+		}
+		
+		// first move based on location of user's move
+		else if ((cells[0].getText().equals("O") || (cells[6].getText().equals("O"))) && cells[3].getText().equals("4")) {
+			cells[3].doClick();
+		} else if ((cells[2].getText().equals("O") || (cells[8].getText().equals("O"))) && cells[5].getText().equals("6")) {
+			cells[5].doClick();
+		} else if ((cells[1].getText().equals("O") || (cells[7].getText().equals("O"))) && cells[5].getText().equals("6")) {
+			cells[5].doClick();
+		} else if ((cells[3].getText().equals("O") || (cells[5].getText().equals("O"))) && cells[4].getText().equals("5")) {
+			cells[4].doClick();
+		} else if (cells[4].getText().equals("O") && cells[3].getText().equals("4")) {
+			cells[3].doClick();
+		} 
+		
+		// prevents stupid moves
+		else if (cells[0].getText().equals("1")) {
+			cells[0].doClick();
+		} else if ((cells[0].getText().equals("1") || cells[0].getText().equals("X")) && (cells[1].getText().equals("2") || cells[1].getText().equals("X")) && (cells[2].getText().equals("3"))) {
+			cells[2].doClick();
+		} else if ((cells[0].getText().equals("1") || cells[0].getText().equals("X")) && (cells[4].getText().equals("5")) && (cells[8].getText().equals("9") || cells[8].getText().equals("X"))) {
+			cells[4].doClick();
+		} else if ((cells[0].getText().equals("1") || cells[0].getText().equals("X")) && (cells[3].getText().equals("4")) && (cells[7].getText().equals("8") || cells[7].getText().equals("X"))) {
+			cells[3].doClick();
+		} else if ((cells[1].getText().equals("2") || cells[1].getText().equals("X")) && (cells[3].getText().equals("4")) && (cells[6].getText().equals("7") || cells[6].getText().equals("X"))) {
+			cells[3].doClick();
+		} else if ((cells[1].getText().equals("2") || cells[1].getText().equals("X")) && (cells[5].getText().equals("6")) && (cells[8].getText().equals("9") || cells[8].getText().equals("X"))) {
+			cells[5].doClick();
+		} else if ((cells[2].getText().equals("3") || cells[2].getText().equals("X")) && (cells[4].getText().equals("5")) && (cells[6].getText().equals("7") || cells[6].getText().equals("X"))) {
+			cells[4].doClick();
+		} else if ((cells[2].getText().equals("3") || cells[2].getText().equals("X")) && (cells[5].getText().equals("6")) && (cells[7].getText().equals("8") || cells[7].getText().equals("X"))) {
+			cells[5].doClick();
+		} else if ((cells[3].getText().equals("4") || cells[3].getText().equals("X")) && (cells[4].getText().equals("5")) && (cells[5].getText().equals("6") || cells[5].getText().equals("X"))) {
+			cells[4].doClick();
+		} else if ((cells[6].getText().equals("7") || cells[6].getText().equals("X")) && (cells[7].getText().equals("8")) && (cells[8].getText().equals("9") || cells[8].getText().equals("X"))) {
+			cells[7].doClick();
+		} 
+		
+		// if nothing else move to an empty spot
+		else if (cells[4].getText().equals("5")) {
+			cells[4].doClick();
+		} else if (cells[1].getText().equals("2")) {
+			cells[1].doClick();
+		} else if (cells[2].getText().equals("3")) {
+			cells[2].doClick();
+		} else if (cells[5].getText().equals("6")) {
+			cells[5].doClick();
+		} else if (cells[6].getText().equals("7")) {
+			cells[6].doClick();
+		} else if (cells[7].getText().equals("8")) {
+			cells[7].doClick();
+		} else if (cells[8].getText().equals("9")) {
+			cells[8].doClick();
+		}
+	}
+	
 	public static void main(String [] args)
 	{
 		JTT thing = new JTT();
