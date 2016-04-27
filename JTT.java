@@ -90,6 +90,8 @@ public class JTT extends JFrame
 
 	public void initialize()
 	{
+		noughts = true;
+		
 		for (int i = 0; i < 9; i++)
 		{
 			char ch = (char) ('0' + i + 1);
