@@ -36,10 +36,10 @@ public class JTT extends JFrame
 			g.setColor(Color.white);
 			g.fillRect(0,0,900,700);
 
-			g.setColor(Color.white);
+			g.setColor(Color.green);
 			g.fillRect(225,550,90,90);
 
-			g.setColor(Color.white);
+			g.setColor(Color.green);
 			g.fillRect(550,550,90,90);
 
 
