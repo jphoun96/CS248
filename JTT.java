@@ -6,10 +6,16 @@ import java.awt.*;
 
 public class JTT extends JFrame
 {
+
 	private static JButton[] cells;
 	private static boolean noughts;
 	private JLabel result;
 	private boolean gameOver;
+	private JButton exitButton;
+	private JButton initButton;
+	private CellButtonHandler[] cellHandlers;
+	private ExitButtonHandler exitHandler;
+	private InitButtonHandler initHandler;
 	private ImageIcon neutralIcon = new ImageIcon("unpressed.png");
 	private ImageIcon crossIcon = new ImageIcon("xpressed.png");
 	private ImageIcon noughtIcon = new ImageIcon("opressed.png");
@@ -32,9 +38,9 @@ public class JTT extends JFrame
 		public Picture()
 		{
 			setSize(900,700);
-			//setLayout(new BorderLayout());
-		    //setContentPane(new JLabel(new ImageIcon("back2.png")));
-			//setLayout(null);
+			setLayout(new BorderLayout());
+		    setContentPane(new JLabel(new ImageIcon("back2.png")));
+			setLayout(null);
 		}
 
 		//set color of background
@@ -60,10 +66,37 @@ public class JTT extends JFrame
 
 	public JTT()
 	{
+		Container stuff=getContentPane();
+		stuff.setLayout( new BorderLayout());
+		r = new Picture();
+		stuff.add(r, "Center" );
+		
 		addWindowListener( new window() );
 		setTitle("Jerry-Tac-Toe");
 		//size of window
 		setSize(900,700);
+		
+		
+		// Create cells and handlers
+		cells = new JButton[9];
+		cellHandlers = new CellButtonHandler[9];
+		for (int i = 0; i < 9; i++) {
+			//char ch = (char) ('0' + i + 1);
+			cells[i] = new JButton("",neutralIcon);
+			cellHandlers[i] = new CellButtonHandler();
+			cells[i].addActionListener(cellHandlers[i]);
+		}
+		
+		// Create initializer and exit buttons and handlers
+		ImageIcon exitIcon = new ImageIcon("exit.png");
+		exitButton = new JButton("",exitIcon);
+		exitHandler = new ExitButtonHandler();
+		exitButton.addActionListener(exitHandler);
+    
+		ImageIcon initIcon = new ImageIcon("reset.png");
+		initButton = new JButton("",initIcon);
+		initHandler = new InitButtonHandler();
+		initButton.addActionListener(initHandler);
 		
 		result= new JLabel("GAME START", SwingConstants.CENTER);
 		result.setForeground(Color.white);
@@ -76,8 +109,14 @@ public class JTT extends JFrame
 		userLose.setBounds(0,0,607,443);
 		userLose.setVisible(false);
 		
+		
+		add(initButton);
 		add(result);
+		add(exitButton);
+		
 		result.setBounds(240,550,90,90);
+		exitButton.setBounds(225,550,90,90);
+		initButton.setBounds(550,550,90,90);
 		
 		cells = new JButton[9];
 
@@ -89,23 +128,30 @@ public class JTT extends JFrame
 				cells[i].setOpaque(true);	
 			}
 				
-		cells[0].setBounds(50,25,88,88);
-		cells[1].setBounds(400,25,88,88);
-		cells[2].setBounds(750,25,88,88);
-		cells[3].setBounds(200,225,88,88);
-		cells[4].setBounds(400,225,88,88);
-		cells[5].setBounds(600,225,88,88);
-		cells[6].setBounds(50,400,88,88);
-		cells[7].setBounds(400,400,88,88);
-		cells[8].setBounds(750,400,88,88);
+		cells[0].setBounds(50,75,88,88);
+		cells[1].setBounds(400,75,88,88);
+		cells[2].setBounds(750,75,88,88);
+		cells[3].setBounds(200,275,88,88);
+		cells[4].setBounds(400,275,88,88);
+		cells[5].setBounds(600,275,88,88);
+		cells[6].setBounds(50,475,88,88);
+		cells[7].setBounds(400,475,88,88);
+		cells[8].setBounds(750,475,88,88);
 
 		
-		Container stuff=getContentPane();
-		stuff.setLayout( new BorderLayout());
-		r = new Picture();
-		stuff.add(r, "Center" );
+		
 		
 		//setVisible(true);
+		
+		// make exit/reset buttons transparent
+		exitButton.setHorizontalTextPosition(SwingConstants.CENTER);
+		exitButton.setOpaque(false);
+		exitButton.setContentAreaFilled(false);
+		exitButton.setBorderPainted(false);
+		initButton.setHorizontalTextPosition(SwingConstants.CENTER);
+		initButton.setOpaque(false);
+		initButton.setContentAreaFilled(false);
+		initButton.setBorderPainted(false);
 		
 		result.setFont(result.getFont().deriveFont(14.0f));
 		
@@ -125,7 +171,7 @@ public class JTT extends JFrame
 		{
 			char ch = (char) ('0' + i + 1);
 			cells[i].setText("" + ch);
-			//cells[i].setIcon(neutralIcon);
+			cells[i].setIcon(neutralIcon);
 		}
 		
 		result.setText("");
@@ -461,6 +507,11 @@ public class JTT extends JFrame
 		}
 	}
 	
+	public static void main(String [] args)
+	{
+		JTT thing = new JTT();
+	}
+	
 	private class CellButtonHandler implements ActionListener
 	{
 		public void actionPerformed(ActionEvent e)
@@ -475,8 +526,8 @@ public class JTT extends JFrame
 			//get text of button
 			String text = pressed.getText();
 			
-			if (text.equals("X") || text.equals("O"))
-			{ return; }  //return if already an X or O
+			if (text.equals("O") || text.equals("X"))
+			{ return; }  //return if already an O or X
 		
 			if(noughts)
 			{
@@ -530,10 +581,19 @@ public class JTT extends JFrame
 			}
 		}
 	}
-	
-	public static void main(String [] args)
-	{
-		JTT thing = new JTT();
+
+	// closes window if exit button is pressed
+	private class ExitButtonHandler implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			System.exit(0);
+		}
 	}
 
+	// restarts game if clear button is pressed
+	private class InitButtonHandler implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			initialize();
+		}
+	}
+	
 }
