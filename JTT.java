@@ -7,6 +7,7 @@ import java.awt.*;
 public class JTT extends JFrame
 {
 	private static JButton[] cells;
+	private static boolean noughts;
 	
 	class window extends WindowAdapter
 	{
@@ -43,11 +44,11 @@ public class JTT extends JFrame
 
 
 		}
-		
+
 	}
 
 	Picture r;
-	
+
 
 	public JTT()
 	{
@@ -55,7 +56,7 @@ public class JTT extends JFrame
 		setTitle("Jerry-Tac-Toe");
 		//size of window
 		setSize(900,700);
-				
+
 		cells = new JButton[9];
 
 		for(int i=0; i<9; i++)
@@ -63,9 +64,9 @@ public class JTT extends JFrame
 				cells[i] = new JButton("something awesome", null );
 				add(cells[i]);
 				cells[i].setBackground(Color.BLUE);
-				cells[i].setOpaque(true);	
+				cells[i].setOpaque(true);
 			}
-				
+
 		cells[0].setBounds(50,25,88,88);
 		cells[1].setBounds(400,25,88,88);
 		cells[2].setBounds(750,25,88,88);
@@ -76,28 +77,32 @@ public class JTT extends JFrame
 		cells[7].setBounds(400,400,88,88);
 		cells[8].setBounds(750,400,88,88);
 
-		
+
 		Container stuff=getContentPane();
 		stuff.setLayout( new BorderLayout());
 		r = new Picture();
 		stuff.add(r, "Center" );
-		
+
 		setVisible(true);
-		
+
 		initialize();
 	}
 
 	public void initialize()
 	{
-		for (int i = 0; i < 9; i++) 
+		for (int i = 0; i < 9; i++)
 		{
 			char ch = (char) ('0' + i + 1);
 			cells[i].setText("" + ch);
 			//cells[i].setIcon(neutralIcon);
 		}
 
+		promptUser();
+
+		setVisible(true);
+
 	}
-	
+
 	public static void cpumove()
 	{
 		// offensive completion
@@ -199,7 +204,7 @@ public class JTT extends JFrame
 				&& cells[6].getText().equals("7")) {
 			cells[6].doClick();
 		}
-		
+
 		// defensive blocking
 		else if ((cells[0].getText().equals("O") && cells[0].getText().equals(cells[1].getText()))
 				&& cells[2].getText().equals("3")) {
@@ -306,7 +311,7 @@ public class JTT extends JFrame
 		} else if (cells[4].getText().equals("X") && cells[6].getText().equals("O") && cells[5].getText().equals("6")) {
 			cells[5].doClick();
 		}
-		
+
 		// first move based on location of user's move
 		else if ((cells[0].getText().equals("O") || (cells[6].getText().equals("O"))) && cells[3].getText().equals("4")) {
 			cells[3].doClick();
@@ -318,8 +323,8 @@ public class JTT extends JFrame
 			cells[4].doClick();
 		} else if (cells[4].getText().equals("O") && cells[3].getText().equals("4")) {
 			cells[3].doClick();
-		} 
-		
+		}
+
 		// prevents stupid moves
 		else if (cells[0].getText().equals("1")) {
 			cells[0].doClick();
@@ -341,8 +346,8 @@ public class JTT extends JFrame
 			cells[4].doClick();
 		} else if ((cells[6].getText().equals("7") || cells[6].getText().equals("X")) && (cells[7].getText().equals("8")) && (cells[8].getText().equals("9") || cells[8].getText().equals("X"))) {
 			cells[7].doClick();
-		} 
-		
+		}
+
 		// if nothing else move to an empty spot
 		else if (cells[4].getText().equals("5")) {
 			cells[4].doClick();
@@ -360,6 +365,27 @@ public class JTT extends JFrame
 			cells[8].doClick();
 		}
 	}
+	
+	public static void promptUser()
+	// asks for user or cpu turn first
+	{
+		String inputValue = JOptionPane
+			.showInputDialog("Who will go first? \n Type \'U\' for User, type \'C\' for Computer");
+			
+		if (inputValue.equals("U") || inputValue.equals("u")) {
+			// continue
+			noughts = true;
+		} else if (inputValue.equals("C") || inputValue.equals("c")) {
+			noughts = false;
+			cpumove();
+		} else {
+			JOptionPane.showMessageDialog(null,
+					"Invalid input. Please try again.", "alert",
+					JOptionPane.ERROR_MESSAGE);
+			promptUser();
+		}
+	}
+	
 	
 	public static void main(String [] args)
 	{
