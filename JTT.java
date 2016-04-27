@@ -7,11 +7,15 @@ import java.awt.*;
 public class JTT extends JFrame
 {
 	private static JButton[] cells;
-	private static boolean cross;
+	private static boolean noughts;
+	private JLabel result;
 	private boolean gameOver;
 	private ImageIcon neutralIcon = new ImageIcon("unpressed.png");
 	private ImageIcon crossIcon = new ImageIcon("xpressed.png");
 	private ImageIcon noughtIcon = new ImageIcon("opressed.png");
+	private static JLabel userWin = new JLabel(new ImageIcon("YouWin.png"));
+	private static JLabel userLose = new JLabel(new ImageIcon("you_lose.png"));
+	
 	
 	class window extends WindowAdapter
 	{
@@ -60,7 +64,21 @@ public class JTT extends JFrame
 		setTitle("Jerry-Tac-Toe");
 		//size of window
 		setSize(900,700);
-				
+		
+		result= new JLabel("GAME START", SwingConstants.CENTER);
+		result.setForeground(Color.white);
+		
+		add(userWin);
+		add(userLose);
+	
+		userWin.setBounds(0,0,640,480);
+		userWin.setVisible(false);
+		userLose.setBounds(0,0,607,443);
+		userLose.setVisible(false);
+		
+		add(result);
+		result.setBounds(240,550,90,90);
+		
 		cells = new JButton[9];
 
 		for(int i=0; i<9; i++)
@@ -87,7 +105,9 @@ public class JTT extends JFrame
 		r = new Picture();
 		stuff.add(r, "Center" );
 		
-		setVisible(true);
+		//setVisible(true);
+		
+		result.setFont(result.getFont().deriveFont(14.0f));
 		
 		initialize();
 	}
@@ -98,12 +118,17 @@ public class JTT extends JFrame
 		noughts = true;
 		gameOver = false;
 		
+		userWin.setVisible(false);
+		userLose.setVisible(false);
+		
 		for (int i = 0; i < 9; i++) 
 		{
 			char ch = (char) ('0' + i + 1);
 			cells[i].setText("" + ch);
 			//cells[i].setIcon(neutralIcon);
 		}
+		
+		result.setText("");
 		promptUser();
 
 		setVisible(true);
@@ -372,6 +397,50 @@ public class JTT extends JFrame
 		}
 	}
 	
+	// checks to see if someone won the game
+	public boolean checkWinner() {
+		if (cells[0].getText().equals(cells[1].getText())
+				&& cells[1].getText().equals(cells[2].getText())) {
+			return true;
+		} else if (cells[0].getText().equals(cells[4].getText())
+				&& cells[4].getText().equals(cells[8].getText())) {
+			return true;
+		} else if (cells[0].getText().equals(cells[3].getText())
+				&& cells[3].getText().equals(cells[7].getText())) {
+			return true;
+		} else if (cells[1].getText().equals(cells[3].getText())
+				&& cells[3].getText().equals(cells[6].getText())) {
+			return true;
+		} else if (cells[1].getText().equals(cells[5].getText())
+				&& cells[5].getText().equals(cells[8].getText())) {
+			return true;
+		} else if (cells[2].getText().equals(cells[4].getText())
+				&& cells[4].getText().equals(cells[6].getText())) {
+			return true;
+		} else if (cells[2].getText().equals(cells[5].getText())
+				&& cells[5].getText().equals(cells[7].getText())) {
+			return true;
+		} else if (cells[3].getText().equals(cells[4].getText())
+				&& cells[4].getText().equals(cells[5].getText())) {
+			return true;
+		} else if (cells[6].getText().equals(cells[7].getText())
+				&& cells[7].getText().equals(cells[8].getText())) {
+			return true;
+		} else if (!cells[0].getText().equals("1")
+				&& !cells[1].getText().equals("2")
+				&& !cells[2].getText().equals("3")
+				&& !cells[3].getText().equals("4")
+				&& !cells[4].getText().equals("5")
+				&& !cells[5].getText().equals("6")
+				&& !cells[6].getText().equals("7")
+				&& !cells[7].getText().equals("8")
+				&& !cells[8].getText().equals("9")) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
 	public static void promptUser()
 	// asks for user or cpu turn first
 	{
@@ -417,6 +486,47 @@ public class JTT extends JFrame
 			else {
 				pressed.setText("X");
 				pressed.setIcon(crossIcon);
+			}
+			
+			// Check winner
+			if (checkWinner()) {
+				// End of game
+        
+				gameOver = true;
+
+				// Display winner message
+				if (!cells[0].getText().equals("1")
+						&& !cells[1].getText().equals("2")
+						&& !cells[2].getText().equals("3")
+						&& !cells[3].getText().equals("4")
+						&& !cells[4].getText().equals("5")
+						&& !cells[5].getText().equals("6")
+						&& !cells[6].getText().equals("7")
+						&& !cells[7].getText().equals("8")
+						&& !cells[8].getText().equals("9")) {
+					result.setText("DRAW GAME");
+				} else {
+					if (noughts) {
+						// displays winning message
+						userWin.setVisible(true);
+						userLose.setVisible(false);
+					} else {
+						// displays losing message
+						userWin.setVisible(false);
+						userLose.setVisible(true);
+					}
+				}
+			} else {
+				// Change player
+				noughts = !noughts;
+
+				// Display player message
+				if (noughts) {
+					// result.setText("Turn: USER");
+				} else {
+					// result.setText("Turn:  CPU");
+					cpuMove();
+				}
 			}
 		}
 	}
